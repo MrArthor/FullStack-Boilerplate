@@ -5,7 +5,7 @@ const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const Flash = require("connect-flash");
 const methodOverride = require("method-override");
-
+const GeneralRoutes = require("./Router/GeneralRoutes");
 const app = express();
 
 const bodyParser = require('body-parser');
@@ -62,9 +62,7 @@ app.use((req, res, next) => {
 })
 
 
-app.get("/", (req, res) => {
-    res.send("home");
-});
+app.get("/", GeneralRoutes);
 
 app.all("*", (req, res, next) => {
     next(new ExpressError("What The Fuck Happened  Now??????", 404));
